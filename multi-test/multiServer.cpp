@@ -11,7 +11,7 @@
 #include <sstream>
 #include "errno.h"
 #include <vector>
-#include "tradeGenerationServer.h"
+#include "multiServer.h"
 #include "assert.h"
 #include "sys/time.h"
 
@@ -196,7 +196,7 @@ int multiServer::callback(sock_info *si, ipc_comms_pipe * comms)
  //TODO:               //status = generateTrade(m_exchange, quote, &timeout);
                 if(status == SUCCESS)
                 {
-                    if(inConnection->write(quote) != SUCCESS)
+                    if(inConnection->write((char *)quote.c_str(), quote.length()) != SUCCESS)
                     {
                         std::cout << __FUNCTION__ << " failed to write to the connection" << std::endl;
                         CB_CLEANUP

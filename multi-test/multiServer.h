@@ -30,7 +30,7 @@ public:
         
     }
     connection_wait wait(struct timeval *timeout);
-    int write(char *buffer, size_t len)
+    int write(char *buffer, size_t len);
     int read();
     inline int close()
     {
